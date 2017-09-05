@@ -1,0 +1,42 @@
+body{
+    background: url("back.png");
+}
+.abstract{          /*all abstract*/
+    list-style: none;
+    color: #333;
+    padding: 0;
+}
+.abstract li:nth-child(2n+1){
+    background:url("back.png") #eeeeee;
+}
+.abs{               /*a abstract*/
+    font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size: 16px;
+    letter-spacing:0.1em;
+    text-align: left;
+    line-height: 1.8;
+    padding: 5px;
+    border-radius: 3px;
+}
+.abstract li{
+    transition: all 0.8s;
+}
+.abstract li:hover{
+    background:url("back.png") #cccccc;
+}
+.abs a{             /*title*/
+    font-size: 1.2em;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 1.5px #00f, -2px 0 0 #f8f8f8, 2px 0 0 #f8f8f8;
+    transition:all 0.3s;
+}
+.abs a:link, a:visited {
+    color: #000;
+}
+.abs a:hover{
+    color: #00f;
+}
+.abs span{         /*time*/
+    display: block;
+    color: #3366CC;
+    text-align: right;
+}

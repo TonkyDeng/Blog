@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>随笔 - 小窝代码块的添加</title>
+    
+    <style type="text/css">
+        .header_css{
+                width: 100%;
+                height: 60px;
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                background: #ffffff;
+                font-size: 16px;
+                font-family: sans-serif;
+                text-align: center;
+                user-select: none;
+                line-height: 90px;
+                z-index: 99999;
+            }
+        #ui_all{
+            position: absolute;
+            right: 200px;
+        }
+        
+        #ui_all li{
+            float: left;
+            list-style-type: none;
+        }
+        #ui_all li a{
+            width: 100px;
+            height: 60px;
+            background: #ffffff;
+            color: #666666;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            line-height: 60px;
+            transition: all 0.2s;
+            text-shadow: 1px 1px 2px #ffffff;
+        }
+        #ui_all li a:hover{
+            width: 100px;
+            height: 60px;
+            background: #888888;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px #666666;
+        }
+        
+        #sq_ui{
+            display: none;
+        }
+
+    </style>
+    <div id="header" class="header_css">
+    <nav>
+    <ui id='ui_all'>
+    <li><a href="http://dearvee.com">首页</a></li><li><a style="background:#666666;color: #ffffff" href="http://dearvee.com/blog/">随笔</a></li><li><a href="http://dearvee.com/api/">小玩意</a></li><li><a href="http://dearvee.com/tools/">工具</a></li><li><a href="http://dearvee.com/api/message/">留言板</a></li><li><a id='sq' href="#">社区</a><ui id='sq_ui'><a id='blog' href="https://cnblogs.com/dearvee/">博客园</a><a id='git' href="https://github.com/dearvee/">Git</a>
+                                 </ui></li></ui></nav></div><script type='text/javascript'>
+                                        
+                                        mouse('sq','sq_ui');
+                                        mouse('sq_ui','sq_ui');
+                                        
+                                        
+                                        function mouse(s,t) {
+                                          document.getElementById(s).onmouseover=function() {
+                                            document.getElementById(t).style.display='block';
+                                            }
+                                          document.getElementById(s).onmouseout=function() {
+                                            document.getElementById(t).style.display='none';
+                                            }
+                                        }
+                                        
+                                      </script>
+                    
+    
+<link href="../css/article.css" type="text/css" rel="stylesheet"/>
+</head>
+<body bgcolor="#f1f1f1">
+<script src="../../index/canvas-nest.min.js"></script>
+
+<ul style="list-style-type: none;">
+    <li><br></li>
+    <li><br></li>
+    <li><br></li>
+            <li class="page">
+                    <h2>小窝代码块的添加</h2>
+                    <h5>Posted&nbsp;@&nbsp;Tuesday 9th of May 2017 04:45:58&nbsp;by&nbsp;dearvee</h5>
+                    <div class="in_div"><img class="in_img" src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494187825294&di=32e574ca0899427eefa012b2480818e2&imgtype=0&src=http%3A%2F%2Fpic23.nipic.com%2F20120824%2F9553120_120544196121_2.jpg"/></div></p>&#160;&#160;&#160;&#160;通过<pre class="in_code">#img(href)</pre>实现图片插入之后，于是想分享一下，正则转换的部分代码。然而，提交之后。代码部分未免显得太丑。虽然简洁才是王道最起码要有个阴影，有点辨识度吧(#~#)。</p>&#160;&#160;&#160;&#160;于是，相同的方法。显得过于简单，就不屑的完成了。可事情并没有想象的那么简单。毕竟是插入代码。代码可不像图片的<pre class="in_code">href</pre>那样相对规整(相对而言@_@)。它可能包含各式各样的字符。所以如果用前面的<pre class="in_code">#img(href)</pre>解析时未免会出现问题。</p>&#160;&#160;&#160;&#160;比如待解析字符串为<pre class="in_code">I'm bad)</pre>，即其包含<pre class="in_code">)</pre>，这时，如果解析方法与img相同，则正则匹配返回的$code[1]便不是期望的<pre class="in_code">I'm bad)</pre>，而是<pre class="in_code">I'm bad</pre>。也即他匹配了代码中的<pre class="in_code">)</pre>，这当然不是我们的目的。</p>&#160;&#160;&#160;&#160;有些码农可能会想尝试匹配最后一个<pre class="in_code">)</pre>，那么可以，你要知道这同时也意味着，在之后的文字中不能包含<pre class="in_code">)</pre>字符。笔者本来就有点词穷（做不到%_%）.</p>&#160;&#160;&#160;&#160;如果这个例子还不够，那么来个终极的待解析字符串<pre class="in_code">))))))))))))))))))))</pre>。现在你不说，鬼也不知道你要匹配哪一个<pre class="in_code">)</pre>字符。</p>&#160;&#160;&#160;&#160;综上所述，以相同方法是无法实现&#160;Strong&#160;插入标识的。</p>&#160;&#160;&#160;&#160;考虑在尾部也添加相应标识即尾部升级为)#code。为了避免解析出错，这里故意加了个空格（没有人看到@_@）。这时，就可以相对精确匹配代码部分，从而实现&#160;Stronger&#160;插入式代码块标识。</p>&#160;&#160;&#160;&#160;要插入任何代码均正常，这才是个开始。其他的都好说，就html这一关就够喝一壶的，我们没必要自己自己造轮子，php有现成的函数<pre class="in_code">htmlentities()</pre>,要浏览器不解析代码，直接显示的方法还有很多，这里就不一一列举。（虽然，转义只简单的一个函数，但真正实现的时候，还是会有许多细节。而不是简单的嵌套了事）。</p>&#160;&#160;&#160;&#160;来个CSS3.0的html听课笔记吧，现在他可能会很长，最近有时间，我会给予他折叠效果，文章多了，也是要有分页才行（#~#）。</p>&#160;&#160;&#160;&#160;来秀一下简单的初步的效果：</p><pre class="in_code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;title&gt;test&lt;/title&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+		body{
+			background: #f1f1f1;
+		}
+		#aaa{
+			color: red;
+		}
+		.green{
+			color: green;
+		}
+		h1{
+			color: blue;
+		}
+		h2{
+			color: red;
+			transition: all 1s;
+		}
+		h2:hover{
+			color: #000000;
+		}
+		ol{
+			color: #333;
+			width: 500px;
+			font-size: 20px;
+		}
+		ol li ol li{
+			border: solid #000000 1px;
+			font-weight: bold;
+		}
+		ol li ol li:nth-child(2n){
+			color: #ffffff;
+			background: #cccccc;
+			text-shadow: #000000 2px 2px 4px;
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+
+&lt;ol&gt;
+	&lt;li&gt;&lt;h2&gt;id选择器(#id)&lt;/h2&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;h2&gt;类选择器(.class)&lt;/h2&gt;&lt;/li&gt;
+	&lt;li&gt;&lt;h2&gt;标签选择器(标签名)&lt;/h2&gt;&lt;/li&gt;
+	&lt;h2&gt;注:id &gt;&gt; class &gt;&gt; 标签 
+非就近原则&lt;/h2&gt;
+
+	&lt;li&gt;
+		&lt;h2&gt;层次选择器&lt;/h2&gt;
+		&lt;ol&gt;
+			&lt;li&gt;后代选取器 E F
+
+			匹配所有值得元素的后代元素。
+
+			&lt;/li&gt;
+
+			&lt;li&gt;子元素选择器 E&gt;F
+
+			只能选择作为某元素子元素的元素。
+
+			&lt;/li&gt;
+			&lt;li&gt;
+			相邻兄弟选择器 E+F
+
+			选择紧接在另一元素后的元素，且二者有相同父元素。
+
+			&lt;/li&gt;
+			&lt;li&gt;
+			普通相邻兄弟选择器 E~F
+
+			选取所有指定元素的相邻兄弟元素。
+
+			&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;h2&gt;结构伪类选择器&lt;/h2&gt;
+		&lt;ol&gt;
+			&lt;li&gt;E:first-child
+父元素的第一个子元素E&lt;/li&gt;
+			&lt;li&gt;E:last-child
+父元素的最后一个子元素E&lt;/li&gt;
+			&lt;li&gt;E F:nth-child(n)
+父级元素E的第n个子元素F&lt;/li&gt;
+			&lt;li&gt;E:first-of-type父元素内具有指定类型的第一个元素E&lt;/li&gt;
+			&lt;li&gt;E:last-of-type父元素内具有指定类型的最后一元素E&lt;/li&gt;
+			&lt;li&gt;E F:nth-of-type父元素E内具有指定类型的第n个元素F&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;h2&gt;属性选择器&lt;/h2&gt;
+		&lt;ol&gt;
+			&lt;li&gt;
+				E[attr]
+
+				选择匹配具有属性attr的E元素
+			&lt;/li&gt;
+			&lt;li&gt;
+				E[attr=val]
+
+				选择匹配具有属性attr的E元素且值为val
+			&lt;/li&gt;
+			&lt;li&gt;
+				E[attr$val]
+
+				选择匹配具有属性attr的E元素且值为val开头的字符串
+			&lt;/li&gt;
+			&lt;li&gt;
+				E[attr^val]
+
+				选择匹配具有属性attr的E元素且值为val结尾的字符串
+			&lt;/li&gt;
+			&lt;li&gt;
+				E[attr*val]
+
+				选择匹配具有属性attr的E元素且值中包含val的字符串
+			&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;h2&gt;字体&lt;/h2&gt;
+		&lt;ol&gt;
+			&lt;li&gt;
+			字体font-family:黑体;
+			&lt;p&gt;&lt;span style=&quot;color: red;font-size: 36px;font-weight: bold;font-style:
+ italic;&quot;&gt;药药&lt;/span&gt;切克闹
+
+			&lt;/li&gt;
+			&lt;li&gt;斜体font-style:italic;&lt;/li&gt;
+			&lt;li&gt;加粗font-weight:blod;&lt;/li&gt;
+			&lt;li&gt;字体大小font-size:20px;&lt;/li&gt;
+			&lt;li&gt;font:italic blod 20px 楷体;顺序:斜体 加粗 大小 字体;&lt;/li&gt;
+		&lt;/ol&gt;
+		&lt;ol&gt;
+			&lt;h2&gt;文本属性&lt;/h2&gt;
+			&lt;li&gt;字体颜色color:#333333;&lt;/li&gt;
+			&lt;li&gt;水平对齐方式text-align&lt;/li&gt;
+			&lt;li&gt;首行文本的缩进text-indent&lt;/li&gt;
+			&lt;li&gt;文本行高line-height&lt;/li&gt;
+		&lt;/ol&gt;
+		&lt;ol&gt;
+			&lt;h2&gt;text-decoration属性&lt;/h2&gt;
+			&lt;li&gt;none默认值,标准文本&lt;/li&gt;
+			&lt;li&gt;underline下划线&lt;/li&gt;
+			&lt;li&gt;overline上划线&lt;/li&gt;
+			&lt;li&gt;line-through设置文本的删除线&lt;/li&gt;
+		&lt;/ol&gt;
+		&lt;ol&gt;
+			&lt;h2&gt;文本阴影&lt;/h2&gt;
+			&lt;li&gt;text-shadow:color &amp;nbsp x-offset y-offset blur-radius;&lt;/li&gt;
+		&lt;/ol&gt;
+		&lt;ol&gt;
+			&lt;h2&gt;超链接样式&lt;/h2&gt;
+			&lt;li&gt;a:link无操作&lt;/li&gt;
+			&lt;li&gt;a:visited单击后&lt;/li&gt;
+			&lt;li&gt;a:hover鼠标移入&lt;/li&gt;
+			&lt;li&gt;a:active单击未释放&lt;/li&gt;
+		&lt;/ol&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;div&quot;&gt;wodehai&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+&lt;style type=&quot;text/css&quot;&gt;
+	.div{
+		width: 100px;
+		height: 100px;
+		background: #cccccc;
+		transition: all 1s;
+	}
+	.div:hover{
+		width: 300px;
+		height: 300px;
+		background: #000000;
+	}
+&lt;/style&gt;</pre>
+                    </p>
+                    
+            </li></p>
+            
+            <li><br></li>
+</ul>
+</div>
+<footer style="color:#ffffff;position: fixed;bottom: 10px;right: 10px;text-shadow: 2px 2px 4px #666666;">@code by vee</footer>
+</body>
+</html>

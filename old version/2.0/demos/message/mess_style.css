@@ -1,0 +1,84 @@
+
+.add_css{
+    width: 100px;
+    height: 60px;
+    position: absolute;
+    right: 30px;
+    top: 30%;
+    background: #888888;
+    color: #ffffff;
+    font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+    font-size: 20px;
+    text-align: center;
+    line-height: 60px;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    user-select: none;
+    transition: background 0.3s;
+    z-index: 99999;
+    text-shadow: 1px 1px 2px #666666;
+    box-shadow: 1px 1px 2px #666666;
+}
+.add_css:hover{
+    background: #666666;
+    color: white;
+}
+.boarder_css{
+    width: 150px;
+    height: 100px;
+    position: absolute;
+    left:20px;
+    top:20px;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+    border: none;
+    opacity: 1;
+    outline: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: text;
+    user-select: none;
+    transition: color 0.5s;
+    resize: none;
+    text-shadow: 1px 1px 2px #666666;
+    box-shadow: 1px 1px 2px #666666;
+    overflow: hidden;
+}
+
+.order_css{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: #333333;
+}
+
+.able_css{
+    width:190px;
+    height:20px;
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    background:#ffffff;
+    color:#666666;
+    cursor: pointer;
+    text-align:center;
+    border: none;
+    text-shadow: 1px 1px 2px #666666;
+    box-shadow: 1px 1px 2px #666666;
+}
+.parent_css{
+    position :absolute;
+    width:230px;
+    height:184px;
+    border-radius:5px;
+    cursor: move;
+    text-shadow: 1px 1px 2px #666666;
+    box-shadow: 1px 1px 2px #666666;
+    font-family: Lato,"PingFang SC","Microsoft YaHei",sans-serif;
+}

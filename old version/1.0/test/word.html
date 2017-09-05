@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="../blog/api/wordclound/wordcloud2.js"></script>
+    <script src="../blog/api/wordclound/wordfunc.js"></script>
+</head>
+<body id="body">
+<canvas id="canvas" width="300" height="300"></canvas>
+<span>123<p>345</p><span>跳到内容
+这个仓库
+Search
+拉请求
+问题
+要旨
+ @Dearvee
+ 登出
+ 观看 41
+  星 568
+  叉子 188 timdream / wordcloud2.js
+ 代码 问题25 拉请求0 项目 0 脉冲 图
+分行： gh页 查找文件 复制路径wordcloud2.js /API.md
+0cfd236  on Nov 28 2016
+@Pirosauro Pirosauro 旋转使用
+7 贡献者 @timdream @Pirosauro @mibamur @JacquiManzi @harrisonpage @bigomega @AlexJF
+原始责任历史
+98行（64 sloc）  4.97 KB
+wordcloud2.js API
+
+特征检测
+
+WordCloud.isSupported
+将评估false如果浏览器不提供运行wordcloud2.js所需的功能。
+
+最小字体大小
+
+一些浏览器对最小字体大小偏好设置有限制，偏好也会影响画布。wordcloud2.js通过缩放画布来解决问题，但您可能有兴趣了解首选项的价值。检测到的值可访问
+
+WordCloud.minFontSize
+用法
+
+WordCloud(elements, options);
+elements是画布的DOM元素，即document.getElementById('my_canvas')或$('#my_canvas')[0]在jQuery中。它也可以是一个DOM元素的数组。如果一个<canvas>元素被传递，Word Cloud将会生成一个图像; 如果它是一些其他元素，Word Cloud将创建<span>元素并填充它。
+
+根据应用程序，您可能需要创建一个图像（高保真度但互动受限）或使用DOM创建“云”，以进一步设计样式。
+
+选项
+
+作为options对象的属性的可用选项是：
+
+介绍
+
+list：在2-d数组的画布上绘制的单词/文本列表[word, size]，例如[['foo', 12], ['bar', 6]]。
+fontFamily：要使用的字体
+fontWeight：字体粗细使用，例如normal，bold或600
+color：文本的颜色，可以是任何CSS颜色，或者callback(word, weight, fontSize, distance, theta)为列表中的每个项目指定不同的颜色。您还可以使用内置关键字指定颜色：random-dark和random-light。如果这是一个DOM云，颜色也可以是null将颜色的硬编码禁用到span元素中（允许您在类级别进行自定义）。
+classes：对于DOM云，允许用户定义span元素的类。可以是一个普通的类字符串，将相同的类应用于每个跨度或callback(word, weight, fontSize, distance, theta)针对每个跨度类的定义。在画布云中，如果相等null，则此选项不起作用。
+minSize：画布上绘制的最小字体大小。
+weightFactor：size对列表中每个单词进行调用或编号的功能。
+clearCanvas：使用背景颜色绘制整个画布，并在开始之前将其考虑为空。
+backgroundColor：背景颜色。
+尺寸
+
+gridSize：用于标记画布可用性的网格大小（以像素为单位） - 网格大小越大，单词之间的差距就越大。
+origin：“云”的起源[x, y]。
+drawOutOfBound：设置为true允许单词在画布之外部分绘制。允许大于绘制画布大小的字。
+面具
+
+drawMask：通过绘制方格来绘制网格以屏蔽绘制的区域。
+maskColor：面具正方形的颜色。
+maskGapWidth：掩模正方形之间的间隙的宽度。
+定时
+
+wait：等待x毫秒，然后开始绘制下一个项目setTimeout。
+abortThreshold：如果循环中的调用大于x毫秒（并阻止浏览器），则立即中止。
+abort：中止时调用回调函数。
+回转
+
+minRotation：如果单词应该旋转，则文本的最小旋转（以rad为单位）应旋转。
+maxRotation：如果单词应该旋转，文本的最大旋转（rad）应该旋转。将两个值设置为相等以保持一个角度的所有文本。
+rotationSteps：强制使用一定数量的角度。在-90°/ 90°范围内将值设置为2，表示只有-90，将使用0或90。
+随机性
+
+shuffle：随机绘制点数，因此每次对同一列表和设置的结果将不同。
+rotateRatio：词的旋转概率。将数字设置为1可始终旋转。
+形状
+
+shape：“云”的形状要画。可以是表示为回调函数的任何极坐标方程，或者是存在的关键字。可用的礼物是circle（默认）， cardioid（苹果或心脏形曲线，最知名的极坐标方程）， diamond（别名square）， ，triangle-forward，（triangle别名triangle-upright，pentagon和star。
+ellipticity：形状wordcloud2.js应该绘制的“平坦度”度。
+互动
+
+注意：hover与click目前仅适用于HTML5画布字云。
+
+hover: callback to call when the cursor enters or leaves a region occupied by a word. The callback will take arugments callback(item, dimension, event), where event is the original mousemove event.
+click: callback to call when the user clicks on a word. The callback will take arugments callback(item, dimension, event), where event is the original click event.
+Events
+
+You can listen to those custom DOM events filed from the canvas element, instead of using callbacks for taking the appropriate action. Cancel the first two events causes the operation to stop immediately.
+
+wordcloudstart
+wordclouddrawn
+wordcloudstop
+wordcloudabort
+wordcloud2.js itself will stop at wordcloudstart event.
+Contact GitHub API Training Shop Blog About
+© 2017 GitHub, Inc. Terms Privacy Security Status Help</span></span>
+
+<script>
+    console.log(get_list(5,5));
+    WordCloud(document.getElementById('canvas'), {
+            list:get_list(5,5),
+            backgroundColor: '#ffccee',
+    });
+</script>
+</body>
+</html>

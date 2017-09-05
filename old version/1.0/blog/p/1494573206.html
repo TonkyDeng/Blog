@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>随笔 - fdsafsd</title>
+    
+    <style type="text/css">
+        .header_css{
+                width: 100%;
+                height: 60px;
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                background: #ffffff;
+                font-size: 16px;
+                font-family: sans-serif;
+                text-align: center;
+                user-select: none;
+                line-height: 90px;
+                z-index: 99999;
+            }
+        #ui_all{
+            position: absolute;
+            right: 200px;
+        }
+        
+        #ui_all li{
+            float: left;
+            list-style-type: none;
+        }
+        #ui_all li a{
+            width: 100px;
+            height: 60px;
+            background: #ffffff;
+            color: #666666;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            line-height: 60px;
+            transition: all 0.2s;
+            text-shadow: 1px 1px 2px #ffffff;
+        }
+        #ui_all li a:hover{
+            width: 100px;
+            height: 60px;
+            background: #888888;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px #666666;
+        }
+        
+        #sq_ui{
+            display: none;
+        }
+
+    </style>
+    <div id="header" class="header_css">
+    <nav>
+    <ui id='ui_all'>
+    <li><a href="http://dearvee.com">首页</a></li><li><a style="background:#666666;color: #ffffff" href="http://dearvee.com/blog/">随笔</a></li><li><a href="http://dearvee.com/api/">小玩意</a></li><li><a href="http://dearvee.com/tools/">工具</a></li><li><a href="http://dearvee.com/api/message/">留言板</a></li><li><a id='sq' href="#">社区</a><ui id='sq_ui'><a id='blog' href="https://cnblogs.com/dearvee/">博客园</a><a id='git' href="https://github.com/dearvee/">Git</a>
+                                 </ui></li></ui></nav></div><script type='text/javascript'>
+                                        
+                                        mouse('sq','sq_ui');
+                                        mouse('sq_ui','sq_ui');
+                                        
+                                        
+                                        function mouse(s,t) {
+                                          document.getElementById(s).onmouseover=function() {
+                                            document.getElementById(t).style.display='block';
+                                            }
+                                          document.getElementById(s).onmouseout=function() {
+                                            document.getElementById(t).style.display='none';
+                                            }
+                                        }
+                                        
+                                      </script>
+                    
+    
+<link href="../css/article.css" type="text/css" rel="stylesheet"/>
+</head>
+<body bgcolor="#f1f1f1">
+<script src="../../index/canvas-nest.min.js"></script>
+
+<ul style="list-style-type: none;">
+    <li><br></li>
+    <li><br></li>
+    <li><br></li>
+            <li class="page">
+                    <h2>fdsafsd</h2>
+                    <h5>Posted&nbsp;@&nbsp;Friday 12th of May 2017 15:13:26&nbsp;by&nbsp;dearvee</h5>
+                    gfdgdffsdfsdfafsdf
+                    </p>
+                    
+            </li></p>
+            
+            <li><br></li>
+</ul>
+</div>
+<footer style="color:#ffffff;position: fixed;bottom: 10px;right: 10px;text-shadow: 2px 2px 4px #666666;">@code by vee</footer>
+</body>
+</html>

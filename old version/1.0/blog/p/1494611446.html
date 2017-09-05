@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>随笔 - 自己的博客</title>
+    
+    <style type="text/css">
+        .header_css{
+                width: 100%;
+                height: 60px;
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                background: #ffffff;
+                font-size: 16px;
+                font-family: sans-serif;
+                text-align: center;
+                user-select: none;
+                line-height: 90px;
+                z-index: 99999;
+            }
+        #ui_all{
+            position: absolute;
+            right: 200px;
+        }
+        
+        #ui_all li{
+            float: left;
+            list-style-type: none;
+        }
+        #ui_all li a{
+            width: 100px;
+            height: 60px;
+            background: #ffffff;
+            color: #666666;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            line-height: 60px;
+            transition: all 0.2s;
+            text-shadow: 1px 1px 2px #ffffff;
+        }
+        #ui_all li a:hover{
+            width: 100px;
+            height: 60px;
+            background: #888888;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px #666666;
+        }
+        
+        #sq_ui{
+            display: none;
+        }
+
+    </style>
+    <div id="header" class="header_css">
+    <nav>
+    <ui id='ui_all'>
+    <li><a href="http://dearvee.com">首页</a></li><li><a style="background:#666666;color: #ffffff" href="http://dearvee.com/blog/">随笔</a></li><li><a href="http://dearvee.com/api/">小玩意</a></li><li><a href="http://dearvee.com/tools/">工具</a></li><li><a href="http://dearvee.com/api/message/">留言板</a></li><li><a id='sq' href="#">社区</a><ui id='sq_ui'><a id='blog' href="https://cnblogs.com/dearvee/">博客园</a><a id='git' href="https://github.com/dearvee/">Git</a>
+                                 </ui></li></ui></nav></div><script type='text/javascript'>
+                                        
+                                        mouse('sq','sq_ui');
+                                        mouse('sq_ui','sq_ui');
+                                        
+                                        
+                                        function mouse(s,t) {
+                                          document.getElementById(s).onmouseover=function() {
+                                            document.getElementById(t).style.display='block';
+                                            }
+                                          document.getElementById(s).onmouseout=function() {
+                                            document.getElementById(t).style.display='none';
+                                            }
+                                        }
+                                        
+                                      </script>
+                    
+    
+<link href="../css/article.css" type="text/css" rel="stylesheet"/>
+</head>
+<body bgcolor="#f1f1f1">
+<script src="../../index/canvas-nest.min.js"></script>
+
+<ul style="list-style-type: none;">
+    <li><br></li>
+    <li><br></li>
+    <li><br></li>
+            <li class="page">
+                    <h2>自己的博客</h2>
+                    <h5>Posted&nbsp;@&nbsp;Tuesday 9th of May 2017 04:36:51&nbsp;by&nbsp;dearvee</h5>
+                    &#160;<div class="in_div"><img class="in_img" src="http://img05.tooopen.com/images/20151110/tooopen_sy_148281388437.jpg"/></div></p>&#160;&#160;&#160;&#160;最近一阵子,每天的课程相对少了.每天闲得无聊.(QAQ噗~,我差点就信了).其实早就琢磨着真正自己做个属于自己的随笔小系统(现在就几个文件称之为系统,可能有点搞笑.@_@).只是课多的时候,上完课心挺累的.回到寝室虽然也是照常写写代码,但大部分时间都浪费了.因为,每天都是零碎的时间,没有足够的精力一次把逻辑理清.就开始写啊写.有时候因为查某一方面的资料,上了个Google,发现某个大牛的博客,或者个人站.于是不由自主的点了几下,当"醒过来"的时候,已是深夜.当然忍受不了这样敲了几行就结束这一天,于是,熬夜来满足自己.安慰自己学到了不少东西.第二天挂着熊猫眼去上课,走在去上课的路上,细想...感觉昨天的代码就是一堆垃圾.代码乱,逻辑差,不灵活.总而言之,开发之前没有系统性的,全局性的缜密的逻辑梳理,后面的学习相对而言大部分是低效的.</p>&#160;&#160;&#160;&#160;每次的失败教训,总结,反思.也许,这样的生活,就可以让我慢慢变得强大吧.</p></p>&#160;&#160;&#160;&#160;下面来说说今天上午自己做的随笔小系统(文件都是个位数23333333),容我暂且称之为系统吧,语言学白痴的我,也没有更确切的词描述它.大约一上午的时间,初步完成了我的随笔小系统的简单逻辑.当然他的功能是有点过于简单,只限于发布简单的文字,不包含图片,超链接.当然,要在博客插入这些元素,无非就是在数据库以特定格式保存其url.在解析数据时,作相应处理即可插入.</p>&#160;&#160;&#160;&#160;现在,我的博客只有编辑和展示页面,当然要把信息存储在数据库,当然少不了一些处理页面.由于博客现在安全性相对不是太高,这里就不一一列举.以免好奇心过强的同学趁我弱弱,gank我(#_#).前几天的css课学了个阴影效果,下午便忍不住改了几个样式,这一改一发不可收拾,这不,到下午3,4点钟才结束这段css旅行.留言板是变得好看了不少.但,还是有不少同学喜欢简约风(我也是&#160;@_@).所以下一步.</p>留言板的更新:</p>1.添加简约的列表显示选项.</p>2.留言者希望留下的信息(留言时间,留言人,留言人邮箱等).</p>3.回复功能.</p>4.留言次序(标号)</p>我也要对自己好一点,给自己的博客添加些新功能.写随笔的时候不用对着代码标签什么的.</p>随笔更新:</p>1.图片,超链接插入.</p>2.文本编辑(加粗,变色).</p>3.来个日常debug日志的页面(看到error的说明字串,就知道问题所在,这也是种享受,那么何不把它们记录下来呢#_#).</p>4.最主要的随笔会变得更加Strong(嘿嘿.真诚的傻笑,因为我知道还有个很危险的操作待解决).</p>&#160;&#160;&#160;&#160;好了吧,最近大致就是做上面这些事情了.也不要列太多了.不然,压力太大可能会把持不住.最近就先做Web方面吧,做完这些,再把搁置了几个星期的python音乐播放器最后更新下.到时候有信心的话.可能会把它挂在小玩意栏以供下载体验.</p>至此关于最近的学习安排,以及上午做的随笔小系统叙述完毕.(兴奋点降不下来也是个问题@_@)</p></p>
+                    </p>
+                    
+            </li></p>
+            
+            <li><br></li>
+</ul>
+</div>
+<footer style="color:#ffffff;position: fixed;bottom: 10px;right: 10px;text-shadow: 2px 2px 4px #666666;">@code by vee</footer>
+</body>
+</html>

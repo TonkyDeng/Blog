@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>随笔 - 深夜的键盘手</title>
+    
+    <style type="text/css">
+        .header_css{
+                width: 100%;
+                height: 60px;
+                position: fixed;
+                left: 0px;
+                top: 0px;
+                background: #ffffff;
+                font-size: 16px;
+                font-family: sans-serif;
+                text-align: center;
+                user-select: none;
+                line-height: 90px;
+                z-index: 99999;
+            }
+        #ui_all{
+            position: absolute;
+            right: 200px;
+        }
+        
+        #ui_all li{
+            float: left;
+            list-style-type: none;
+        }
+        #ui_all li a{
+            width: 100px;
+            height: 60px;
+            background: #ffffff;
+            color: #666666;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            line-height: 60px;
+            transition: all 0.2s;
+            text-shadow: 1px 1px 2px #ffffff;
+        }
+        #ui_all li a:hover{
+            width: 100px;
+            height: 60px;
+            background: #888888;
+            color: #ffffff;
+            text-shadow: 1px 1px 2px #666666;
+        }
+        
+        #sq_ui{
+            display: none;
+        }
+
+    </style>
+    <div id="header" class="header_css">
+    <nav>
+    <ui id='ui_all'>
+    <li><a href="http://dearvee.com">首页</a></li><li><a style="background:#666666;color: #ffffff" href="http://dearvee.com/blog/">随笔</a></li><li><a href="http://dearvee.com/api/">小玩意</a></li><li><a href="http://dearvee.com/tools/">工具</a></li><li><a href="http://dearvee.com/api/message/">留言板</a></li><li><a id='sq' href="#">社区</a><ui id='sq_ui'><a id='blog' href="https://cnblogs.com/dearvee/">博客园</a><a id='git' href="https://github.com/dearvee/">Git</a>
+                                 </ui></li></ui></nav></div><script type='text/javascript'>
+                                        
+                                        mouse('sq','sq_ui');
+                                        mouse('sq_ui','sq_ui');
+                                        
+                                        
+                                        function mouse(s,t) {
+                                          document.getElementById(s).onmouseover=function() {
+                                            document.getElementById(t).style.display='block';
+                                            }
+                                          document.getElementById(s).onmouseout=function() {
+                                            document.getElementById(t).style.display='none';
+                                            }
+                                        }
+                                        
+                                      </script>
+                    
+    
+<link href="../css/article.css" type="text/css" rel="stylesheet"/>
+</head>
+<body bgcolor="#f1f1f1">
+<script src="../../index/canvas-nest.min.js"></script>
+
+<ul style="list-style-type: none;">
+    <li><br></li>
+    <li><br></li>
+    <li><br></li>
+            <li class="page">
+                    <h2>深夜的键盘手</h2>
+                    <h5>Posted&nbsp;@&nbsp;Tuesday 9th of May 2017 04:47:18&nbsp;by&nbsp;dearvee</h5>
+                    <div class="in_div"><img class="in_img" src="http://img07.tooopen.com/images/20170320/tooopen_sy_202527818519.jpg"/></div></p>&#160;&#160;&#160;&#160;又是一个不眠夜，时间流逝的飞快，窗外只隐约货车的轰隆。同时也伴随着同志们高亢的鼾声（@_@）。我想我是有点打扰到他们了（~_~明天我会早睡的，什么都不做），也许几个月后，整天跟同志们嘻嘻哈哈的日子便不在常有，或许若干年后同志们想起关于我的事，也就这噼里啪啦的键盘声了吧（#_#）。</p></p>&#160;&#160;&#160;&#160;自从前天做了个随笔小系统，这几天亢奋的受不了。实现了一个功能或者效果，还想接着做另一个。总之就是“贪得无厌”。我觉得是时候该控制自己的这种行为了。</p></p>&#160;&#160;&#160;&#160;来说说今天的正事。</p></p>&#160;&#160;&#160;&#160;前天做完了随笔小系统中插入图片的标签。在图片网站选图的时候，注意到了一个现在比较流行的图片显示效果（描述：即鼠标移入后，图片放大，且容器大小不变，图片保持水平垂直居中。经查阅资料，得到完美的相同效果。</p></p>&#160;&#160;&#160;&#160;原理叙述，hover改变图片长和宽问题，不在赘述。关键就在于如何在transition变换中，始终维持图片水平垂直居中。并且在此过程，当图片尺寸大于容器时，亦居中。</p></p>#原理：</p>1.&#160;绝对定位&#160;&#160;<pre class="in_code">position: absolute;    top: 50%;    left: 50%;</pre></p></p>（百分比依据于容器。让图片的左上角0，0点位于容器中心点。）</p></p>2.&#160;2D转换&#160;&#160;<pre class="in_code">transform: translate(-50%,-50%);</pre>&#160;</p></p>（百分比依据于图片。分别向左，向上移动，像素分别为图片的宽高的50%）</p>&#160;&#160;&#160;&#160;由以上两步，图片中心点与容器中心点<pre class="in_code">始终重合</pre>的。从而达到水平垂直居中的效果，再加上渐变transition即实现炫酷的图片鼠标悬停特效。下面上完整测试代码。（好好睡一觉zzzZZZ）</p></p>Demo：</p><pre class="in_code">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;title&gt;&lt;/title&gt;
+	&lt;style type=&quot;text/css&quot;&gt;
+		.img{
+			width: 100px;
+			height: 100px;
+			transition: all 1s;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%); 
+		}
+		.img:hover{
+			width: 120px;
+			height: 120px;
+		}
+		.div{
+			width:100px; 
+			height:100px; 
+			position: relative; 
+			overflow: hidden;
+		}
+	&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+	&lt;div class=&quot;div&quot;&gt;
+		&lt;img class=&quot;img&quot; src=&quot;http://img07.tooopen.com/images/20170405/tooopen
+_sy_204258981534.jpg&quot;/&gt;
+	&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                    </p>
+                    
+            </li></p>
+            
+            <li><br></li>
+</ul>
+</div>
+<footer style="color:#ffffff;position: fixed;bottom: 10px;right: 10px;text-shadow: 2px 2px 4px #666666;">@code by vee</footer>
+</body>
+</html>
