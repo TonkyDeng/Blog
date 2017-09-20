@@ -1,0 +1,6 @@
+<h1> </h1>
+{% for debug in debug_list %}
+<h2>Bug: {{ debug.bug }}</h2>
+<h4>Time: {{ debug.timestamp }}</h4>
+<h2>Debug: {{ debug.debug }}</h2>
+{% endfor %}
