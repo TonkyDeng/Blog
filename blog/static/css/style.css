@@ -184,13 +184,24 @@ Site Navigation
 	opacity: 1;
 }
 
-
-
-
-
-
-
-
-
-
-
+#main{
+	max-width:50%;
+	margin:50px auto;
+}
+#page ul{
+	list-style-type:none;
+}
+#page ul li{
+	display:block;
+	margin:50px auto;
+}
+#top{
+	position:fixed;
+	bottom:50px;
+	right:30px;
+	display:block;
+	background:#222;
+	opacity:0.6;
+	color:#fff;
+	padding:3px 10px 3px 10px;
+}

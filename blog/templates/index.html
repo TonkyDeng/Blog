@@ -4,6 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel='stylesheet' href='static/css/style.css' type='text/css'/>
+<link rel='stylesheet' type='text/css' href='static/css/py.css'/>
+<script src="static/js/ajax.js"></script>
 <title>Tonky</title>
 </head>
 <body>
@@ -11,8 +13,8 @@
 	<nav>
 		<div class="wrap">
 			<ul class="index">
-				<li><a href="{{ index }}">Home</a></li>
-				<li><a href="{{ index }}/py">Py</a>
+				<li><a href="/">Home</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/py')">Py</a>
 					<!--
 					<ul class='sub-menu'>
 						<li><a href='#'>Django</a></li>
@@ -21,9 +23,10 @@
 						<li><a href='#'>Crawler</a></li>
 					</ul>
 					-->
-				</li>
-				<li><a href="{{ index }}/debug">Debug</a>
-				<li><a href="{{ index }}/ideal&reality">Ideal & Reality</a></li>
+				</li>|
+
+				<li><a href="javascript:void(0);" onclick="getPage('/debug')">Debug</a></li>|
+				<li><a href="javascript:void(0);" onclick="getPage('/ideal&reality')">Ideal & Reality</a></li>|
 				<li><a href='#'>Community</a>
 					<ul class='sub-menu'>
 						<li><a href='https://github.com/TonkyDeng'>GitHub</a></li>
@@ -32,21 +35,33 @@
 						<li><a href='https://www.cnblogs.com/dearvee'>CnBlogs</a></li>
 						<li><a href='http://blog.csdn.net/dearvee'>CSDN</a></li>
 					</ul>
-				</li>
+				</li>|
 				<!--
 				<li><a href="{{ index }}/life">Life</a></li>
 				-->
-				<li><a href="static/about.html">About</a></li>
+				<li><a href="#">Life</a>
+					<ul class='sub-menu'>
+						<li><a href="javascript:void(0);" onclick="getPage('/essay');">Essay</a></li>
+					</ul>
+				</li>
+				<li><a href="javascript:void(0);" onclick="getPage('static/about.html')">About</a></li>
 			</ul>
 		</div>
 	</nav>
 	<header id="header" class="site-header">
 		<div class="wrap">
 			<div class="title-area">
-				<h1 class="site-title"><a href="{{ index }}">Tonky(Dearvee)'s Blog !</a></h1>
+				<h1 class="site-title"><a href="/">Tonky(Dearvee)'s Blog !</a></h1>
 				<h3 class="site-description"><span>山重水复疑无路，柳暗花明又一村。</span></h3>
 			</div>
 		</div>
 	</header>
+
+
+	<div id='main'>
+		<div id='page'></div>
+	</div>
+
+<a href='#' id='top'>Top</a>
 </body>
 </html>

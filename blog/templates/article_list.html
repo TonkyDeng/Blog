@@ -1,0 +1,11 @@
+<ul>
+{% for article in article_list %}
+	<li>
+		<div>
+			<h1>{{ article.title }}</h1>
+			<h4>{{ article.timestamp }}</h4>
+			<p>{{ article.body|truncatechars:222 }}<a href="javascript:void(0);" onclick="getPage('{{ article.title }}')">[ReadMore]</a></p><!--文章缩写-->
+		</div>
+	</li>
+{% endfor %}
+</ul>

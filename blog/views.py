@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from blog.models import Py, Debug, Ideal_Reality
+from blog.models import Py, Debug, Ideal_Reality, Essay
 from django.shortcuts import render_to_response
 
 # Create your views here.
@@ -10,7 +10,7 @@ def index(request):
 
 def py(request):
 	py_list = Py.objects.all() 
-	return render_to_response('py.html',{'py_list' : py_list})
+	return render_to_response('article_list.html',{'article_list' : py_list})
 
 def debug(request):
 	debug_list = Debug.objects.all()
@@ -19,3 +19,7 @@ def debug(request):
 def ideal_reality(request):
 	ideal_reality_list = Ideal_Reality.objects.all()
 	return render_to_response('ideal_reality.html',{'ideal_reality_list' : ideal_reality_list})
+
+def essay(request):
+	essay_list = Essay.objects.all() 
+	return render_to_response('article_list.html',{'article_list' : essay_list})

@@ -19,6 +19,11 @@ class Ideal_Reality(models.Model):
 	reality = models.TextField()
 	reality_timestamp = models.DateTimeField()
 
+class Essay(models.Model):
+    title = models.CharField(max_length = 150)
+    body = models.TextField()
+    timestamp = models.DateTimeField()
+
 class PyAdmin(admin.ModelAdmin):
 	list_display = ('title','timestamp')
 
@@ -28,6 +33,11 @@ class DebugAdmin(admin.ModelAdmin):
 class Ideal_RealityAdmin(admin.ModelAdmin):
 	list_display = ('ideal','ideal_timestamp')
 
+class EssayAdmin(admin.ModelAdmin):
+	list_display = ('title','timestamp')
+
+
 admin.site.register(Py,PyAdmin)
 admin.site.register(Debug,DebugAdmin)
 admin.site.register(Ideal_Reality,Ideal_RealityAdmin)
+admin.site.register(Essay,EssayAdmin)
