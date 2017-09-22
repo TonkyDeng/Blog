@@ -4,7 +4,13 @@
 		<div>
 			<h1>{{ article.title }}</h1>
 			<h4>{{ article.timestamp }}</h4>
-			<p>{{ article.body|truncatechars:222 }}<a href="javascript:void(0);" onclick="getPage('{{ article.title }}')">[ReadMore]</a></p><!--文章缩写-->
+			<p>
+			{% ifnotequal article_list|length 1 %}	<!--单个文章去除略写，和ReadMore-->
+				{{ article.body|truncatechars:222 }}
+				<a href="javascript:void(0);" onclick="getPage('/{{ item }}/{{ article.title }}')">[ReadMore]</a></p><!--文章缩写-->
+			{% else %}
+				{{ article.body }}
+			{% endifnotequal %}
 		</div>
 	</li>
 {% endfor %}

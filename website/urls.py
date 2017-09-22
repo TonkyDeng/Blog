@@ -16,12 +16,11 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from blog.views import index, py, debug, ideal_reality, essay
-
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$',index),
-	url(r'^py/$',py),
+	url(r'^admin/', admin.site.urls),
+	url(r'^$',index),
+	url(r'^py/(.*)$',py),#匹配中文
 	url(r'^debug/$',debug),
 	url(r'^ideal&reality/$',ideal_reality),
-	url(r'^essay/$',essay),
+	url(r'^essay/(.*)$',essay),
 ]
