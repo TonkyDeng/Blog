@@ -1,5 +1,19 @@
 function getPage(req)
 {
+
+getData(req);
+
+var state = {
+    title: '123456',
+    url: req,
+    otherkey: 'abcd'
+};
+window.history.pushState(state, document.title, req);//改变url显示
+
+}
+
+function getData(url){
+	
 var xmlhttp;
 if (window.XMLHttpRequest)
   {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -16,13 +30,13 @@ xmlhttp.onreadystatechange=function()
     document.getElementById("page").innerHTML=xmlhttp.responseText;
     }
   }
-xmlhttp.open("GET",req,true);
+xmlhttp.open("GET",url,true);
 xmlhttp.send();
-
-var state = {
-    title: '123456',
-    url: req,
-    otherkey: 'abcd'
-};
-window.history.pushState(state, document.title, url);
 }
+
+window.addEventListener('popstate', function(e){
+    if (history.state){
+		var state = e.state
+        getData(state.url);
+    }
+}, false);
