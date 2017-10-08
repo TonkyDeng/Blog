@@ -1,0 +1,52 @@
+.log{
+	padding: 0 10px 10px 60px;
+	border: #eee 10px solid;
+}
+.tip{
+	width: 70px;
+    text-align: center;
+    position: relative;
+    left: -33px;
+    bottom: -35px;
+    padding: 12px;
+    background: red;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: #24262e 5px 5px 10px;
+}
+.left{
+	padding: 16px;
+	background: #eee;
+	color: red;
+	padding-top: 50px;
+	max-height: 111px;
+	overflow: hidden;
+	transition: max-height 1s;
+}
+.left:hover{
+	max-height: 10000px;
+}
+.right{
+	padding: 16px;
+	background: #eee;
+	color: green;
+	padding-top: 50px;
+	max-height: 111px;
+	overflow: hidden;
+	transition: max-height 1s;
+}
+.right:hover{
+	max-height: 10000px;
+}
+.time{
+	text-align: center;
+    width: 250px;
+    color: #fff;
+    padding: 10px;
+    background: #24262e;
+    border-radius: 10px;
+    position: relative;
+    right: -250px;
+    bottom: -38px;
+    box-shadow: #24262e 5px 5px 10px;i
+}

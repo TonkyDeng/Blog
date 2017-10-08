@@ -2,15 +2,15 @@
 {% for article in article_list %}
 	<li>
 		<div>
-			<h1>{{ article.title }}</h1>
+			<h2 class='title'>{{ article.title }}</h2>
 			<h4>{{ article.timestamp }}</h4>
 			<p>
 			{% ifnotequal article_list|length 1 %}	<!--单个文章去除略写，和ReadMore-->
-				{{ article.body|truncatechars:222 }}
-				<a href="javascript:void(0);" onclick="getPage('/{{ item }}/{{ article.title }}')">[ReadMore]</a></p><!--文章缩写-->
+				{{ article.body | safe | truncatechars:222 }}<a href="javascript:void(0);" onclick="getPage('/{{ item }}/{{ article.title }}')">[ReadMore]</a><!--文章缩写-->
 			{% else %}
-				{{ article.body }}
+				{{ article.body | safe }}
 			{% endifnotequal %}
+			</p>
 		</div>
 	</li>
 {% endfor %}

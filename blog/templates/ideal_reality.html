@@ -1,6 +1,19 @@
+<ul>
 {% for ideal_reality in ideal_reality_list %}
-<h1>Ideal: {{ ideal_reality.ideal }}</h1>
-<h4>Time: {{ ideal_reality.ideal_timestamp }}</h4>
-<h1>Reality: {{ ideal_reality.reality }}</h1>
-<h4>Time: {{ ideal_reality.reality_timestamp }}</h4>
+	<li>
+		<div class='tip' style='background: #24262e;'>{{ forloop.counter }}</div>
+		<ul class='log'>
+			<li>
+				<div class='tip'>Ideal</div>
+				<div class='left'>{{ ideal_reality.ideal }}</div>
+				<div class='time' style='bottom:30px;'>{{ ideal_reality.ideal_timestamp }}</div>
+			</li>
+			<li>
+				<div class='tip' style='background: green;'>Reality</div>
+				<div class='right'>{{ ideal_reality.reality }}</div>
+				<div class='time' style='bottom: 30px;'>{{ ideal_reality.reality_timestamp }}</div>
+			</li>
+		</ul>
+	</li>
 {% endfor %}
+</ul>

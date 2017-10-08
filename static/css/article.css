@@ -1,0 +1,24 @@
+.title{
+	font-weight: normal;
+}
+
+.link{
+	color: #3366CC;
+}
+
+.code{
+	color: #3366CC;
+    background: #eeeeee;
+    display: inline-block;
+    border-radius: 3px;
+    font-size: 14px;
+    font-family: "Source Code Pro",sans-serif;
+    margin: -7px auto;
+    line-height: 1.8;
+    word-break: break-all;
+    overflow: hidden;
+    padding: 0px 5px;
+    border: 1px solid #ddd;
+    border-left: 2px solid #3366CC;
+    margin-top: 10px;
+}
