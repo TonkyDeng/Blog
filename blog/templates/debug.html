@@ -1,15 +1,16 @@
+<h1 style='text-align:center;'>Bug is your treasure!</h1>
 <ul>
 {% for debug in debug_list %}
 	<li>
-		<div class='tip' style='background: #24262e;'>{{ forloop.counter }}</div>
+		<div class='tip' style='background: #24262e;'>{{ forloop.revcounter }}</div>
 		<ul class='log'>
 			<li>
 				<div class='tip'>Bug</div>
-				<div class='left'>{{ debug.bug }}</div>
+				<div class='left'>{{ debug.bug | safe }}</div>
 			</li>
 			<li>
 				<div class='tip' style='background: green;'>Debug</div>
-				<div class='right'>{{ debug.debug }}</div>
+				<div class='right'>{{ debug.debug | safe }}</div>
 			</li>
 			<li class='time'>{{ debug.timestamp }}</li>
 		</ul>

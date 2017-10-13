@@ -6,7 +6,7 @@
 <link rel='stylesheet' href='static/css/article.css' type='text/css'/>
 <link rel='stylesheet' href='static/css/log.css' type='text/css'/>
 <script src="static/js/ajax.js"></script>
-<title>逐日</title>
+<title>A Freed Donkey .</title>
 </head>
 <body>
 	<nav>
@@ -48,9 +48,20 @@
 		</div>
 	</nav>
 
-
 	<div id='main'>
-		<div id='page'></div>
+		<div id='page'>
+			<div id='img' style='width:800px;margin:0 -120px'>
+				<script src='/static/js/canvas.js'></script>
+				<canvas id='canvas' style='margin:0px auto;transition:margin 0.6s;'></canvas>
+				<script>
+					var width = 800;
+					//var width = document.body.clientWidth*3/7;
+					canvas.setAttribute("width",width);
+					canvas.setAttribute("height",width)
+					MakeCoor([20,'#fff',50,'#fff',20,'#fff']);
+				</script>
+			</div>
+		</div>
 	</div>
 
 <a href='#' id='top'>Top</a>

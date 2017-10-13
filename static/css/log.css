@@ -15,7 +15,7 @@
     box-shadow: #24262e 5px 5px 10px;
 }
 .left{
-	padding: 16px;
+	padding: 50px;
 	background: #eee;
 	color: red;
 	padding-top: 50px;
@@ -27,7 +27,7 @@
 	max-height: 10000px;
 }
 .right{
-	padding: 16px;
+	padding: 50px;
 	background: #eee;
 	color: green;
 	padding-top: 50px;

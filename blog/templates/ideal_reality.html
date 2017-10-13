@@ -1,16 +1,17 @@
+<h1 style='text-align:center;'>Reality is often cruel!</h1>
 <ul>
 {% for ideal_reality in ideal_reality_list %}
 	<li>
-		<div class='tip' style='background: #24262e;'>{{ forloop.counter }}</div>
+		<div class='tip' style='background: #24262e;'>{{ forloop.revcounter }}</div>
 		<ul class='log'>
 			<li>
 				<div class='tip'>Ideal</div>
-				<div class='left'>{{ ideal_reality.ideal }}</div>
+				<div class='left'>{{ ideal_reality.ideal | safe }}</div>
 				<div class='time' style='bottom:30px;'>{{ ideal_reality.ideal_timestamp }}</div>
 			</li>
 			<li>
 				<div class='tip' style='background: green;'>Reality</div>
-				<div class='right'>{{ ideal_reality.reality }}</div>
+				<div class='right'>{{ ideal_reality.reality | safe }}</div>
 				<div class='time' style='bottom: 30px;'>{{ ideal_reality.reality_timestamp }}</div>
 			</li>
 		</ul>

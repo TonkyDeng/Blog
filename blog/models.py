@@ -11,13 +11,13 @@ class Debug(models.Model):
 	bug = models.TextField()
 	env = models.CharField(max_length = 150)
 	timestamp = models.DateTimeField()
-	debug = models.TextField()
+	debug = models.TextField(blank=True)
 
 class Ideal_Reality(models.Model):
 	ideal = models.TextField()
 	ideal_timestamp = models.DateTimeField()
-	reality = models.TextField()
-	reality_timestamp = models.DateTimeField()
+	reality = models.TextField(blank=True)
+	reality_timestamp = models.DateTimeField(blank=True,null=True)
 
 class Essay(models.Model):
     title = models.CharField(max_length = 150)

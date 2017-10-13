@@ -18,6 +18,11 @@ def py(request,title=''):
 
 def debug(request):
 	debug_list = Debug.objects.order_by('-timestamp')#按时间戳排序
+	for n in range(len(debug_list)):
+		debug_list[n].bug = debug_list[n].bug.replace('\n','<br>')
+		debug_list[n].bug = debug_list[n].bug.replace(' ','&nbsp;')
+		debug_list[n].debug = debug_list[n].debug.replace('\n','<br>')
+		debug_list[n].debug = debug_list[n].debug.replace(' ','&nbsp')
 	return render_to_response('debug.html',{'debug_list' : debug_list})
 
 def ideal_reality(request):
