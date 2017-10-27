@@ -24,6 +24,7 @@ if (xmlhttp.readyState==4 && xmlhttp.status==200)
 {
 $("#hidden").html(xmlhttp.responseText);
 $("#page").html($("#hidden").find("#page").html());//get page value
+
 }
 }
 xmlhttp.open("GET",url,true);
