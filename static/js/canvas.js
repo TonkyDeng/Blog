@@ -67,7 +67,12 @@ function MakeCoor(op){
 	for(var i=Width/4;i<canvas.width-Width/4;i++){
 		opx[i] = i;
 		opy[i] = -4/Width/Width*Math.pow(opx[i]-Width,3)+Width;
-	}	
-	setTimeout("document.getElementById('canvas').style.margin = '-40px auto';",T);
+	}
 	DrawLine(opx,opy,[Width/4,canvas.width-Width/4],width,color,time);
+	
+	setTimeout("document.getElementById('canvas').style.margin = '0px auto';",T);
+	setTimeout("document.getElementById('canvas').style.width = '700px';document.getElementById('img').style.width = '700px';",T+600);
+	setTimeout("document.getElementsByTagName('span')[0].style.opacity = '1';",T+1200);
+	setTimeout("document.getElementsByTagName('span')[1].style.opacity = '1';",T+1200+1000);
+	setTimeout("document.getElementsByTagName('span')[2].style.opacity = '1';",T+1200+2000);
 }

@@ -1,11 +1,13 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+import sys
 import json
 import requests
-
 def getRes(url,headers={}):	
 	res = requests.get(url,headers=headers)
 	return res.text
 
-def getList(qq='2797977995'):
+def getList(qq):
 	res = getRes('https://c.y.qq.com/rsc/fcgi-bin/fcg_get_profile_homepage.fcg?jsonpCallback=MusicJsonCallback9520110164977194&cid=205360838&userid='+qq+'&reqfrom=1')
 	js = json.loads(res.strip().strip('MusicJsonCallback9520110164977194()'))
 	js = js['data']
@@ -20,6 +22,14 @@ def getList(qq='2797977995'):
 
 	#list
 	lists = js['mydiss']['list']#title dissid picurl subtitle
+
+	print('counting song.')
+	global count
+	for c in lists:
+		count = count + int(c['subtitle'].split('首')[0])
+	print('counted '+str(count)+' song.')
+	
+
 	list = [getSong(x['dissid']) for x in lists]
 
 	for n in range(len(lists)):
@@ -49,7 +59,32 @@ def getSong(sid):
 				"singer":j['singer'][0]['name'],
 		}
 		getUrl = lambda songmid,mid:'http://dl.stream.qqmusic.qq.com/C400'+songmid+'.m4a?vkey='+json.loads(getRes('https://c.y.qq.com/base/fcgi-bin/fcg_music_express_mobile3.fcg?&jsonpCallback=MusicJsonCallback&cid=205361747&songmid='+mid+'&filename=C400'+songmid+'.m4a&guid=6908829875',headers))['data']['items'][0]['vkey']+'&guid=6908829875&fromtag=66'
-		song["url"]=getUrl(j['strMediaMid'],j['songmid'])
-		songs.append(song)
+		global count
+		global cur
+		try:
+			song["url"]=getUrl(j['strMediaMid'],j['songmid'])
+			songs.append(song)
+			#print('\rget ['+song['song']+'] success!')
+		except:
+			#print('\rget ['+song['song']+'] wrong!!!')
+			pass
+		cur = cur + 1
+		x = cur*100/count
+		#print('▐'*(int(x/2))+'  '+str(x)+'%',end="")
+		sys.stdout.write('| %s |  %%.4f'%('█'*(int(x/2)))  %x)
+		sys.stdout.write("%\r");
+		sys.stdout.flush();
+
 	return songs
-print(getList())
+def Writer(qq='2797977995'):
+	print('start update!')
+	file = open('list.new','w')
+	cache = str(getList(qq))
+	print('start write list file!')
+	file.write(cache)
+	file.close()
+	print('update success!')
+
+count = 0
+cur = 0
+Writer('1797977995');

@@ -97,7 +97,7 @@ a{
 }
 
 #main{
-	max-width:600px;
+	max-width:1000px;
 	margin:150px auto;
 	letter-spacing: 0.1em;
 	opacity: 1;
@@ -114,6 +114,12 @@ a{
 		opacity: 1;
 		margin:150px auto;
 	}
+}
+
+#page{
+	max-width:600px;
+	margin:0 auto;
+	transition:0.8s;
 }
 
 #page ul{

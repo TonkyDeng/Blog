@@ -1,0 +1,72 @@
+#lists{
+	padding:0;
+}
+#lists img{
+	width:200px;
+	height:200px;
+	border-radius: 100px;
+	filter: grayscale(1);
+}
+#lists img:hover{
+	filter: grayscale(0.3);
+}
+#lists li{
+	display:inline-block!important;
+	margin: 60px 60px!important;
+	box-shadow: 0px 0px 8px 8px #eee;
+	cursor:pointer;
+	transition:0.6s;
+	border-radius: 100px;
+}
+#lists li:hover{
+	box-shadow: 0px 0px 12px 12px #ddd;
+	transform: scale(1.05);
+}
+#lists span {
+    display: block;
+    position: absolute;
+    text-align: center;
+    width: 200px;
+}
+
+#player{
+	color:#24262e;
+	position:fixed;
+	right:0px;
+	top:200px;
+	background:#fff;
+	border-radius: 8px 0 0 8px;
+	border:solid 1px #eee;
+	box-shadow: -3px -3px 3px 3px #eee;
+	max-height:80%;
+	overflow-y:scroll;
+	transition:0.8s;
+}
+
+#list{
+    list-style: none;
+	padding: 0;
+	margin: 0;
+	color:rgba(255,255,255,0.75);
+	border-collapse:collapse;
+	cursor:pointer;
+	transition:0.8s;
+}
+#list tr{
+	color:#24262e;
+	transition:0.8s;
+	border: solid 1px #eee;
+	transition:0.8s;
+}
+#list tr:hover{
+	color:#eee;
+}
+#list th{
+	padding:10px 20px;
+}
+#list tr>th:not(:first-child){
+	display:none;
+}
+#list tr:hover{
+	background:#000;
+}
