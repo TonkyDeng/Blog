@@ -5,7 +5,8 @@ $(function(){
         success: function(filedata) {
             var data = eval('('+filedata+')');
 			getLists(data);
-			getList(data['lists'][0]['songs']);
+			getList(data['lists'][1]['songs']);
+
 
 			var listnum=0;
 			var songnum=0;
@@ -17,12 +18,21 @@ $(function(){
 			});
 
 			
-			$('#player').on('click','#list tr',function(){
+			$('#player').on('click','#list li',function(){
 				songnum = $(this).index();
 				audio.src=data['lists'][listnum]['songs'][songnum]['url'];
 				audio.play();
+				/*$(this).css('background','#24262e');
+				$(this).css('color','#fff');*/
 			});
 
+			/*$('#player').on('mouseover','#list tr',function(){
+				$(this).find("th").css("display","inline-block");
+			});
+
+			$('#player').on('mouseout','#list tr',function(){
+				$(this).find("th").css("display","none");
+			});*/
         }
     });
 });
@@ -30,7 +40,10 @@ function getLists(data){
 	var str="";
 	var lists = data['lists'];
 	for(var i=0;i<lists.length;i++){
-    	str+="<li><img src='"+lists[i]['picurl']+"'><span>"+lists[i]['title']+"<br/>"+lists[i]['subtitle']+"</span></li>";
+		var cache = lists[i]['picurl']
+		if(cache === "")
+			cache = "http://cdn-img.easyicon.net/png/11674/1167488.gif";
+    	str+="<li><img src='"+cache+"'><span>"+lists[i]['title']+"<br/>"+lists[i]['subtitle']+"</span></li>";
 	}
 	$('#lists').html(str);
 }
@@ -38,10 +51,14 @@ function getLists(data){
 function getList(list){
 	var str="";
 	for(var i=0;i<list.length;i++){
-		str+="<tr><th>"+list[i]['song']+"</th><th>"+list[i]['singer']+"</th><th>Time</th></tr>";
+		str+="<li><span>"+list[i]['song']+"</span><span>"+list[i]['singer']+"</span><span>Time</span></li>";
 	}
 	$('#list').html(str);
 }
 
 
-
+function getTime(src){
+	var audio = $('#py')[0];
+	audio.src = src;
+	return audio.duration
+}

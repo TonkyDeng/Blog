@@ -36,11 +36,10 @@
 	top:200px;
 	background:#fff;
 	border-radius: 8px 0 0 8px;
-	border:solid 1px #eee;
-	box-shadow: -3px -3px 3px 3px #eee;
 	max-height:80%;
-	overflow-y:scroll;
+	overflow-x:hidden;
 	transition:0.8s;
+	background: rgba(255,255,255,0);
 }
 
 #list{
@@ -48,25 +47,31 @@
 	padding: 0;
 	margin: 0;
 	color:rgba(255,255,255,0.75);
-	border-collapse:collapse;
 	cursor:pointer;
 	transition:0.8s;
 }
-#list tr{
+#list li{
 	color:#24262e;
-	transition:0.8s;
 	border: solid 1px #eee;
 	transition:0.8s;
+	position: relative;
+	right: -280px;
 }
-#list tr:hover{
+#list li:nth-of-type(odd) {
+    background: #fbfbfd;
+}
+#list li:hover{
+	right:-60px;
 	color:#eee;
+	background:#24262e;
+	box-shadow: -3px -3px 3px 3px #eee;
 }
-#list th{
+#list span{
+	display:inline-block;
 	padding:10px 20px;
+	width: 100px;
+	overflow: hidden;
+	white-space: nowrap;
 }
-#list tr>th:not(:first-child){
-	display:none;
-}
-#list tr:hover{
-	background:#000;
+#list li>span:not(:first-child){
 }

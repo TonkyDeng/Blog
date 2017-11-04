@@ -3,6 +3,17 @@ from blog.models import Py, Debug, Ideal_Reality, Essay
 from django.shortcuts import render_to_response
 # Create your views here.
 
+def page_not_found(request):
+	return render_to_response('error/404.html')
+
+def page_error(request):
+    return render(request, 'error/500.html')
+
+def permission_denied(request):
+	return render(request, 'error/403.html')
+
+
+
 def index(request):
 	return render_to_response('index.html')
 
@@ -13,7 +24,7 @@ def py(request,title=''):
 		if(title[-1:] == '/'):
 			title = title[:-1]
 		py_list = Py.objects.filter(title = title)
-	py_list = translater(py_list)#替换
+	py_list = translater(py_list)
 	return render_to_response('article_list.html',{'article_list' : py_list,'item':'py'})
 
 def debug(request):

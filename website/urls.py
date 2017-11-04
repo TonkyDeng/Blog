@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from blog.views import index, py, debug, ideal_reality, essay
+from blog.views import *
 urlpatterns = [
 	url(r'^admin/', admin.site.urls),
 	url(r'^$',index),
@@ -24,3 +24,7 @@ urlpatterns = [
 	url(r'^ideal&reality/$',ideal_reality),
 	url(r'^essay/(.*)$',essay),
 ]
+
+handler404 = page_not_found
+handler500 = page_error
+handler403 = permission_denied

@@ -5,8 +5,9 @@
 <link rel='stylesheet' href='css/article.css' type='text/css'/>
 <link rel='stylesheet' href='css/log.css' type='text/css'/>
 <link rel='stylesheet' href='css/song.css' type='text/css'/>
-<script src="js/ajax.js"></script>
 <script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ajax.js"></script>
 <script src="js/song.js"></script>
 <title>A Freed Donkey .</title>
 </head>
@@ -51,16 +52,42 @@
 <div id='page'>
 <script>$("#page").css("max-width","1000px")</script>
 
-
 <h1 style='text-align:center;'>Sync My qqmusic Data.</h1>
 
+<!--
+<style>
+	#qq-data{
+		text-align:center;
+	}
+	#qq-data th{
+		width:333px;
+	}
+
+	#qq-admin{
+		width:200px;
+		height:200px;
+	}	
+</style>
+<table id='qq-data' style='display:inline-block;'>
+	<tr>
+		<th><span>Head Imag</span></th>
+		<th><span>Nike</span></th>
+		<th><span>Music Taste</span></th>
+	</tr>
+	<tr>
+		<th><img id='qq-admin'/></th>
+		<th><span id='qq-nick'></span></th>
+		<th><span id='qq-taste'></span></th>
+	</tr>
+</table>
+-->
 <ul id='lists'>
 </ul>
 
 
 <div id='player'>
-	<table id='list'>
-	</table>
+	<ul id='list'>
+	</ul>
 	<audio id='py'></audio>
 </div>
 

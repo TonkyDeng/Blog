@@ -1,4 +1,5 @@
 html {
+	overflow:scroll;
 	font-size: 62.5%;
 }
 
@@ -44,6 +45,24 @@ a{
 	margin: 0;
 	padding: 0;
 	text-align: left;
+	position:relative;
+}
+
+.index li:hover {
+}
+
+.index li:hover > ul {
+	left: auto;
+	opacity: 1;
+}
+
+.selected:after{
+	position: absolute;
+    content: "";
+    display: block;
+    width: -webkit-fill-available;
+    height: 8px;
+    background: #24262e;
 }
 
 .index a {
@@ -87,14 +106,6 @@ a{
 	margin: -54px 0 0 199px;
 }
 
-.index li:hover {
-	position: static;
-}
-
-.index li:hover > ul {
-	left: auto;
-	opacity: 1;
-}
 
 #main{
 	max-width:1000px;
@@ -140,3 +151,29 @@ a{
 	padding:3px 10px 3px 10px;
 	border-radius: 5px;
 }
+
+
+html *::-webkit-scrollbar {
+	width:5px;
+	height:5px;
+	opacity:0;
+}
+html *::-webkit-scrollbar-button    {
+	display:none;
+}
+html *::-webkit-scrollbar-track     {
+}
+html *::-webkit-scrollbar-track-piece {
+}
+html *::-webkit-scrollbar-thumb{
+	background:#24262e;
+	border-radius:4px;
+}
+html *::-webkit-scrollbar-corner {
+	/*background:#82AFFF;*/
+	display:none;
+}
+html *::-webkit-scrollbar-resizer  {
+	/*background:#FF0BEE;*/
+}
+
