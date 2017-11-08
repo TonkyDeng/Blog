@@ -39,7 +39,7 @@
 	max-height: 10000px;
 }
 .time{
-	text-align: center;
+	text-align: center;`
     width: 250px;
     color: #fff;
     padding: 10px;
@@ -48,5 +48,6 @@
     position: relative;
     right: -250px;
     bottom: -38px;
-    box-shadow: #24262e 5px 5px 10px;i
+	width:250px;
+    box-shadow: #24262e 5px 5px 10px;
 }

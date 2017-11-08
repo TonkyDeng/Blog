@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import sys
+import time
 import json
 import requests
 def getRes(url,headers={}):	
@@ -18,10 +19,12 @@ def getList(qq):
 	taste = js['creator']['cfinfo']['title']
 
 	#fav
-	favurl = js['mymusic'][0]['jumpurl']
+	fav = {'title':js['mymusic'][0]['title'],'picurl':js['mymusic'][0]['laypic'],'dissid':js['mymusic'][0]['id'],'subtitle':js['mymusic'][0]['subtitle']}
 
 	#list
 	lists = js['mydiss']['list']#title dissid picurl subtitle
+	
+	lists.insert(0,fav)
 
 	print('counting song.')
 	global count
@@ -34,13 +37,16 @@ def getList(qq):
 
 	for n in range(len(lists)):
 		lists[n]["songs"] = list[n]
-		del lists[n]['iconurl']
-		del lists[n]['isshow']
-		del lists[n]['dissid']
-		del lists[n]['dirid']
-		del lists[n]['icontype']
+		try:
+			del lists[n]['dissid']
+			del lists[n]['iconurl']
+			del lists[n]['isshow']
+			del lists[n]['dirid']
+			del lists[n]['icontype']
+		except:
+			pass
 
-	return {"nick":nick,"imag":imag,"taste":taste,"favurl":favurl,"lists":lists}
+	return {"nick":nick,"imag":imag,"taste":taste,"lists":lists}
 
 def getSong(sid):
 	
@@ -64,21 +70,27 @@ def getSong(sid):
 		try:
 			song["url"]=getUrl(j['strMediaMid'],j['songmid'])
 			songs.append(song)
-			#print('\rget ['+song['song']+'] success!')
+			print('\rget ['+song['song']+'] success!')
+			#sys.stdout.write('get %s success!'%song['song'])
+			#sys.stdout.write("%\r");
+			#sys.stdout.flush();
 		except:
 			#print('\rget ['+song['song']+'] wrong!!!')
+			#sys.stdout.write('get %s wrong!'%song['song'])
+			#sys.stdout.write("%\r");
+			#sys.stdout.flush();
 			pass
 		cur = cur + 1
 		x = cur*100/count
 		#print('▐'*(int(x/2))+'  '+str(x)+'%',end="")
-		sys.stdout.write('| %s |  %%.4f'%('█'*(int(x/2)))  %x)
+		sys.stdout.write('|%s   %%.4f'%('█'*(int(x/2))+' '*(50-int(x/2))+'|')  %x)
 		sys.stdout.write("%\r");
 		sys.stdout.flush();
 
 	return songs
 def Writer(qq='2797977995'):
 	print('start update!')
-	file = open('list.new','w')
+	file = open('list','w')
 	cache = str(getList(qq))
 	print('start write list file!')
 	file.write(cache)

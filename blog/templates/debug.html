@@ -1,7 +1,7 @@
 {% include 'head.html' %}
 	<div id='main'>
 		<div id='page'>
-		<script>$("#page").css("max-width","600px")</script>
+		<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(2)"));</script>
 <h1 style='text-align:center;'>Bug is your treasure!</h1>
 <ul>
 {% for debug in debug_list %}
@@ -25,3 +25,4 @@
 	</div>
 
 <div id='hidden' style='display:none;'></div>
+{% include 'footer.html' %}

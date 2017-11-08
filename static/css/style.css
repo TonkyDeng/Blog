@@ -2,16 +2,20 @@ html {
 	overflow-y: scroll;
 	overflow-x: hidden;
 	font-size: 62.5%;
+	height:100%;
 }
 
 body {
 	color: #333;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: "Viga", sans-serif;
 	font-size: 16px;	
 	font-weight: 400;
 	line-height: 1.625;
 	background-color: #fff;
 	margin:0;
+	height: -moz-calc(100% - 160px);
+	height: -webkit-calc(100% - 160px);
+	height: calc(100% - 160px);
 }
 
 ::-moz-selection {
@@ -26,6 +30,7 @@ body {
 
 a{
 	text-decoration: none;
+	outline: none;
 }
 
 .index {
@@ -39,6 +44,7 @@ a{
 	position: fixed;
 	top:0;
 	z-index: 999;
+	border:none;
 }
 
 .index li {
@@ -55,15 +61,22 @@ a{
 .index li:hover > ul {
 	left: auto;
 	opacity: 1;
+	height:auto;
 }
 
-.selected:after{
+.index .selected a{
+	color:red!important;
+}
+
+.index .selected:after{
 	position: absolute;
     content: "";
     display: block;
     width: -webkit-fill-available;
+	width: -moz-available;
     height: 8px;
-    background: #24262e;
+	background: red;
+	margin-top: -8px;
 }
 
 .index a {
@@ -73,9 +86,10 @@ a{
 	position: relative;
 	color: rgba(255,255,255,0.75);
 	text-decoration: none;
+	transition:0.8s;
 }
 .index a:hover {
-	color: #fff;
+	color: red;
 }
 
 .index ul {
@@ -95,6 +109,7 @@ a{
 
 .index ul a {
 	background: #24292e;
+	color:rgba(255,255,255,0.75);
 	border: 1px solid #eee;
 	border-top: none;
 	font-size: 14px;
@@ -115,6 +130,9 @@ a{
 	opacity: 1;
 	animation:op 0.8s 1;
 	transition:0.8s;
+	min-height: -moz-calc(100% - 300px);
+	min-height: -webkit-calc(100% - 300px);
+	min-height: calc(100% - 300px);
 }
 @keyframes op
 {
@@ -142,15 +160,29 @@ a{
 	margin:50px auto;
 	word-wrap:break-word;
 }
+#page a{
+	color: #24262e;
+	font-weight: bold;
+	transition:0.8s;
+}
+#page a:hover{
+	color:red;
+}
 #top{
 	position:fixed;
-	bottom:50px;
+	bottom:180px;
 	right:30px;
 	display:block;
 	background:#24292e;
 	color:#fff;
 	padding:3px 10px 3px 10px;
 	border-radius: 5px;
+	z-index:1000;
+	transition:0.8s;
+	opacity:0;
+}
+#top:hover{
+	color:red;
 }
 
 
@@ -167,8 +199,8 @@ html *::-webkit-scrollbar-track     {
 html *::-webkit-scrollbar-track-piece {
 }
 html *::-webkit-scrollbar-thumb{
-	background:#24262e;
-	border-radius:4px;
+	background:red;
+	/*border-radius:4px;*/
 }
 html *::-webkit-scrollbar-corner {
 	/*background:#82AFFF;*/
@@ -228,4 +260,13 @@ footer ul{
     font-weight: bold;
     font-size: 2.5em;
 	text-shadow: 1px 1px 5px #fff;
+}
+
+#load-img{
+	z-index: 1000;
+    width: 80px;
+    height: 80px;
+    background: #24262e;
+    position: fixed;
+	top:0px;
 }

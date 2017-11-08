@@ -1,7 +1,14 @@
 {% include 'head.html' %}
 	<div id='main'>
 		<div id='page'>
-		<script>$("#page").css("max-width","600px")</script>
+		<script>
+		$("#page").css("max-width","600px");
+		{% ifequal item 'py' %}
+		Init($(".wrap .index>li:eq({{ 1 }})"));
+		{% else %}
+		Init($(".wrap .index>li:eq({{ 5 }})"));
+		{% endifequal %}
+		</script>
 		
 <ul>
 {% for article in article_list %}
@@ -26,4 +33,5 @@
 	</div>
 
 <div id='hidden' style='display:none;'></div>
+{% include 'footer.html' %}
 </body>

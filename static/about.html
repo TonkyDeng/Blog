@@ -1,6 +1,7 @@
 <!--header-->
 <head>
 <meta charset="UTF-8">
+<link href="http://fonts.googleapis.com/css?family=Viga" rel="stylesheet" type="text/css" />
 <link rel='stylesheet' href='css/style.css' type='text/css'/>
 <link rel='stylesheet' href='css/article.css' type='text/css'/>
 <link rel='stylesheet' href='css/log.css' type='text/css'/>
@@ -17,9 +18,7 @@
 				<li><a href="javascript:void(0);" onclick="getPage('/py')">Py</a></li>|
 				<li><a href="javascript:void(0);" onclick="getPage('/debug')">Debug</a></li>|
 				<li><a href="javascript:void(0);" onclick="getPage('/ideal&reality')">Ideal & Reality</a></li>|
-				<!--
-				<li><a href="{{ index }}/life">Life</a></li>
-				-->
+				<li><a href="javascript:void(0);" onclick="getPage('/static/docs.html')">Docs</a></li>|
 				<li><a href="#">Life</a>
 					<ul class='sub-menu'>
 						<li><a href="javascript:void(0);" onclick="getPage('/essay');">Essay</a></li>
@@ -30,16 +29,15 @@
 			</ul>
 		</div>
 	</nav>
-<a href='#' id='top'>Top</a>
-<a href='javascript:void(0);'>Donate</a>
+<a href='javascript:void(0);' id='top'>Top</a>
 </div>
 <!--header-->
 <div id='main'>
 <div id='page'>
-<script>$("#page").css("max-width","600px")</script>
+<script>$("#page").css("max-width","600px");Init($(".wrap .index>li:eq(6)"));</script>
 
 <style>
-img{
+#me{
 	width: 180px;
 	height: 180px;
 	float: left;
@@ -53,7 +51,7 @@ p{
 </style>
 
 <div>
-	<img src='/static/me.jpg'/>
+	<img id='me' src='/static/me.jpg'/>
 	<p>Hi ！ 我的名字是邓炜。(如果你看到Tonky或者Dearvee，那就是我。我更喜欢Tonky这个名字，当然那不是Donkey。)</p>
 	<p>我是一名（Python）程序员（先让我美着吧）。</p>
 	<p>爱好嘛，当然是“玩”喽，真不知道要玩到多大勒。Python这个“玩具”还是不错的，开门见山，没那么多前奏。当然也有人说这玩意玩玩还行，拿来赚饭吃...有点欠。当然我不会在这里争论什么。</p>
@@ -86,6 +84,6 @@ p{
 	</ul>
 	<ul class='index'>
 		<li><a href='javascript:void(0);' onclick='getDonate();'>Donate</a></li>
-		<li><a>Contact</a></li>
+		<li><a href='mailto:me@tonky.org'>Email</a></li>
 	<ul>
 </fonter>

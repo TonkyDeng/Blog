@@ -1,5 +1,6 @@
 function getPage(req)
 {
+$('.wrap .index').before("<img id='load-img' src='/static/load.gif'/>");
 getData(req);
 var state = {
 title: '123456',
@@ -24,7 +25,7 @@ if (xmlhttp.readyState==4 && xmlhttp.status==200)
 {
 $("#hidden").html(xmlhttp.responseText);
 $("#page").html($("#hidden").find("#page").html());//get page value
-
+$('#load-img').remove();
 }
 }
 xmlhttp.open("GET",url,true);

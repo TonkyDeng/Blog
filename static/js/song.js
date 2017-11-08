@@ -51,7 +51,7 @@ function getLists(data){
 function getList(list){
 	var str="";
 	for(var i=0;i<list.length;i++){
-		str+="<li><span>"+list[i]['song']+"</span><span>"+list[i]['singer']+"</span><span>Time</span></li>";
+		str+="<li><a href='javascript:void(0);'><span>"+list[i]['song']+"</span><span>"+list[i]['singer']+"</span><span>Time</span></a></li>";
 	}
 	$('#list').html(str);
 }
