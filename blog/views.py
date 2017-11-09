@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from blog.models import Py, Debug, Ideal_Reality, Essay
 from django.shortcuts import render_to_response
+from blog.markdown.translater import getHTML
 # Create your views here.
 
 def page_not_found(request):
 	return render_to_response('error/404.html')
 
 def page_error(request):
-    return render(request, 'error/500.html')
+    return render_to_response(request, 'error/500.html')
 
 def permission_denied(request):
-	return render(request, 'error/403.html')
+	return render_to_response(request, 'error/403.html')
 
 
 
@@ -24,20 +25,22 @@ def py(request,title=''):
 		if(title[-1:] == '/'):
 			title = title[:-1]
 		py_list = Py.objects.filter(title = title)
-	py_list = translater(py_list)
+	for n in py_list:
+		n.body = getHTML(n.body)
 	return render_to_response('article_list.html',{'article_list' : py_list,'item':'py'})
 
 def debug(request):
 	debug_list = Debug.objects.order_by('-timestamp')#按时间戳排序
-	for n in range(len(debug_list)):
-		debug_list[n].bug = debug_list[n].bug.replace('\n','<br>')
-		debug_list[n].bug = debug_list[n].bug.replace(' ','&nbsp;')
-		debug_list[n].debug = debug_list[n].debug.replace('\n','<br>')
-		debug_list[n].debug = debug_list[n].debug.replace(' ','&nbsp')
+	for n in debug_list:
+		n.bug = getHTML(n.bug)
+		n.debug = getHTML(n.debug)
 	return render_to_response('debug.html',{'debug_list' : debug_list})
 
 def ideal_reality(request):
 	ideal_reality_list = Ideal_Reality.objects.order_by('-ideal_timestamp')#按时间戳排序
+	for n in ideal_reality_list:
+		n.ideal = getHTML(n.ideal)
+		n.reality = getHTML(n.reality)
 	return render_to_response('ideal_reality.html',{'ideal_reality_list' : ideal_reality_list})
 
 def essay(request,title=''):
@@ -47,13 +50,6 @@ def essay(request,title=''):
 		if(title[-1:] == '/'):
 			title = title[:-1]
 		essay_list = Essay.objects.filter(title = title)
-	essay_list = translater(essay_list)
+	for n in essay_list:
+		n.body = getHTML(n.body)
 	return render_to_response('article_list.html',{'article_list' : essay_list,'item' : 'essay'}) 
-
-
-def translater(words):
-	for n in range(len(words)):
-		words[n].body = words[n].body.replace('\n','<br>')
-		words[n].body = words[n].body.replace('########','<hr>')
-		words[n].body = words[n].body.replace(' ','&nbsp;')
-	return words
