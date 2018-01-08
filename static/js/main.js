@@ -17,6 +17,7 @@ $(function(){
           	$("#top").css("opacity","0");
     });
 
+
 });
 
 function getDonate(){

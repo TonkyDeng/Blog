@@ -6,19 +6,21 @@
 		{% ifequal item 'py' %}
 		Init($(".wrap .index>li:eq({{ 1 }})"));
 		{% else %}
-		Init($(".wrap .index>li:eq({{ 5 }})"));
+		Init($(".wrap .index>li:eq({{ 4 }})"));
 		{% endifequal %}
 		</script>
 		
 <ul>
 {% for article in article_list %}
 	<li>
+		<hr>
+		<div class='gopage'></div>
 		<div>
 			<h2 class='title'>{{ article.title }}</h2>
 			<h4>{{ article.timestamp }}</h4>
 			<p>
 			{% ifnotequal article_list|length 1 %}	<!--单个文章去除略写，和ReadMore-->
-				{{ article.body | safe | truncatechars:222 }}<a href="javascript:void(0);" onclick="getPage('/{{ item }}/{{ article.title }}')">[ReadMore]</a><!--文章缩写-->
+				{{ article.body | striptags| cut:'&nbsp;' | truncatechars:222 }}<a class='readmore' href="javascript:void(0);" onclick="getPage('/{{ item }}/{{ article.title }}')">[阅读全文]</a><!--文章缩写-->
 			{% else %}
 				{{ article.body | safe }}
 			{% endifnotequal %}
@@ -32,6 +34,5 @@
 		</div>
 	</div>
 
-<div id='hidden' style='display:none;'></div>
 {% include 'footer.html' %}
 </body>

@@ -1,24 +1,18 @@
-.title{
-	font-weight: normal;
+.gopage{
+	border-style: solid;
+	border-width: 30px 0 0 30px;
+	border-color: #fff red;
+	position: absolute;
+	right:0;
+	box-shadow:-1px 1px 1px #24262e;
+	animation:get 1s 1;
 }
 
-.link{
-	color: #3366CC;
-}
-
-.code{
-	color: #3366CC;
-    background: #eeeeee;
-    display: inline-block;
-    border-radius: 3px;
-    font-size: 14px;
-    font-family: "Source Code Pro",sans-serif;
-    margin: -7px auto;
-    line-height: 1.8;
-    word-break: break-all;
-    overflow: hidden;
-    padding: 0px 5px;
-    border: 1px solid #ddd;
-    border-left: 2px solid #3366CC;
-    margin-top: 10px;
+@keyframes get{
+	from{
+		border-width:100px 0 0 100px;
+	}
+	to{
+		border-width:30px 0 0 30px;
+	}
 }

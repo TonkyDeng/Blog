@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import os
 import sys
 import time
 import json
@@ -83,20 +84,21 @@ def getSong(sid):
 		cur = cur + 1
 		x = cur*100/count
 		#print('▐'*(int(x/2))+'  '+str(x)+'%',end="")
-		sys.stdout.write('|%s   %%.4f'%('█'*(int(x/2))+' '*(50-int(x/2))+'|')  %x)
+		sys.stdout.write('|%s   %%.4f'%('>'*(int(x/2))+' '*(50-int(x/2))+'|')  %x)
 		sys.stdout.write("%\r");
 		sys.stdout.flush();
 
 	return songs
 def Writer(qq='2797977995'):
 	print('start update!')
-	file = open('list','w')
+	file = open('/home/tonky/Blog/static/api/list.new','w',encoding='utf-8')
 	cache = str(getList(qq))
 	print('start write list file!')
 	file.write(cache)
 	file.close()
+	os.rename("/home/tonky/Blog/static/api/list.new","/home/tonky/Blog/static/api/list")
 	print('update success!')
 
 count = 0
 cur = 0
-Writer('1797977995');
+Writer('1797977995')

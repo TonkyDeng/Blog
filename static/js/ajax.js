@@ -1,15 +1,25 @@
+pushUrl(window.location.href);
+function pushUrl(req){
+	var state = {
+		title: '123456',
+		url: req,
+		otherkey: 'abcd'
+	};
+	window.history.pushState(state, document.title, req);//改变url显示
+}
 function getPage(req)
 {
-$('.wrap .index').before("<img id='load-img' src='/static/load.gif'/>");
 getData(req);
-var state = {
-title: '123456',
-url: req,
-otherkey: 'abcd'
-};
-window.history.pushState(state, document.title, req);//改变url显示
+//var state = {
+//title: '123456',
+//url: req,
+//otherkey: 'abcd'
+//};
+//window.history.pushState(state, document.title, req);//改变url显示
+pushUrl(req);
 }
 function getData(url){
+$('.wrap .index').before("<img id='load-img' src='/static/load.gif'/>");
 var xmlhttp;
 if (window.XMLHttpRequest)
 {// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -23,9 +33,10 @@ xmlhttp.onreadystatechange=function()
 {
 if (xmlhttp.readyState==4 && xmlhttp.status==200)
 {
-$("#hidden").html(xmlhttp.responseText);
-$("#page").html($("#hidden").find("#page").html());//get page value
+//$("#hidden").text(xmlhttp.responseText);
+$("#page").html($(xmlhttp.responseText).find("#page").html());
 $('#load-img').remove();
+$("html,body").animate({scrollTop:0},'slow');
 }
 }
 xmlhttp.open("GET",url,true);
@@ -33,7 +44,8 @@ xmlhttp.send();
 }
 window.addEventListener('popstate', function(e){
 if (history.state){
-var state = e.state
+var state = e.state;
 getData(state.url);
+$(".selected").removeClass('selected');/*remove*/
 }
 }, false);

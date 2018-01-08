@@ -13,6 +13,7 @@
     border-radius: 10px;
     color: #fff;
     box-shadow: #24262e 5px 5px 10px;
+	z-index: 10;
 }
 .left{
 	padding: 50px;

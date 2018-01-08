@@ -1,0 +1,19 @@
+<script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
+<video id="video" controls="controls"></video>
+<script>
+  if(Hls.isSupported()) {
+    var video = document.getElementById('video');
+    var hls = new Hls();
+    hls.loadSource('http://pl-ali.youku.com/playlist/m3u8?vid=XMzI0NzMxMjcxMg%3D%3D&type=hd2&ups_client_netip=24225ad6&ups_ts=1514708587&utid=DI7OEnuaelYCASQiWtTMQJ0t&ccode=0502&psid=cd16d236ff99664890334222c93aa849&ups_userid=913345675&ups_ytid=913345675&duration=6005&expire=18000&ups_key=bf858db8e1b19441a46f7a1b84a8fb78');
+    hls.attachMedia(video);
+    hls.on(Hls.Events.MANIFEST_PARSED,function() {
+      video.play();
+  });
+ }
+</script>
+<!--<html>
+	<body>
+	<video src='
+		' width='600' height='500' controls='controls'></video>
+	</body>
+</html>-->

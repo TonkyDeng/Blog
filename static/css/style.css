@@ -10,7 +10,7 @@ body {
 	font-family: "Viga", sans-serif;
 	font-size: 16px;	
 	font-weight: 400;
-	line-height: 1.625;
+	line-height: 1.8;
 	background-color: #fff;
 	margin:0;
 	height: -moz-calc(100% - 160px);
@@ -31,6 +31,28 @@ body {
 a{
 	text-decoration: none;
 	outline: none;
+}
+
+p{
+	text-indent: 30px;
+}
+
+hr{
+	border: none;
+	border-top: 1px dashed #24262e;
+	margin:0;
+}
+
+code{
+	background: #24262e;
+	padding: 5px 10px;
+	margin: 0px 5px;
+	display: inline-block;
+	color: #fff;
+	border-left: solid 5px red;
+	text-indent: 0;
+	word-break: break-word;
+	font-family: "Source Code Pro",sans-serif;
 }
 
 .index {
@@ -154,6 +176,7 @@ a{
 
 #page ul{
 	list-style-type:none;
+	position:relative;
 }
 #page>ul>li{
 	display:block;

@@ -8,7 +8,7 @@ $(function(){
 			getList(data['lists'][1]['songs']);
 
 
-			var listnum=0;
+			var listnum=1;
 			var songnum=0;
 			var audio = $("#py")[0];
 
