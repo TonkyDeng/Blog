@@ -4,7 +4,7 @@ def getSpace(string):
 	return re.sub('<[^>]+>', lambda m:m.group(0).replace('&nbsp;',' '), string.replace(' ','&nbsp;'))
 
 def getLine(string):
-	return string.replace('\r\n','<br>'+'&nbsp;'*4)
+	return string.replace('\r\n','<br>'+4*'&nbsp;')
 
 def getH(string):
 	string = ' ' + string	# exprase  start '#'
